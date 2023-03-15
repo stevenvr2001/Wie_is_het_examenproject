@@ -6,6 +6,8 @@ import be.kdg.projectbasis.model.spelbeurten.SpelbeurtComputer;
 import be.kdg.projectbasis.model.spelbeurten.SpelbeurtSpeler;
 import be.kdg.projectbasis.view.highscore.HighscorePresenter;
 import be.kdg.projectbasis.view.highscore.HighscoreView;
+import be.kdg.projectbasis.view.hoofdmenu.HoofdmenuPresenter;
+import be.kdg.projectbasis.view.hoofdmenu.HoofdmenuView;
 import javafx.application.Application;
 
 import javafx.scene.Scene;
@@ -26,9 +28,8 @@ public class Main extends Application{
     @Override
     //for javafx version
     public void start(Stage primaryStage) {
-        ProgrammaModel model = new ProgrammaModel();
-        HighscoreView view = new HighscoreView();
-        HighscorePresenter presenter = new HighscorePresenter(model, view);
+        HoofdmenuView view = new HoofdmenuView();
+        HoofdmenuPresenter presenter = new HoofdmenuPresenter(view);
         primaryStage.setScene(new Scene(view));
         presenter.addWindowEventHandlers();
         primaryStage.show();

@@ -1,8 +1,7 @@
 package be.kdg.projectbasis.view.highscore;
 
-import be.kdg.projectbasis.model.Highscore;
+import be.kdg.projectbasis.model.highscore.Highscore;
 import be.kdg.projectbasis.model.ProgrammaModel;
-import be.kdg.projectbasis.view.highscore.HighscoreView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;

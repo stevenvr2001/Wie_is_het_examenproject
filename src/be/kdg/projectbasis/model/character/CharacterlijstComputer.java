@@ -2,38 +2,36 @@ package be.kdg.projectbasis.model.character;
 import be.kdg.projectbasis.model.character.Enums.*;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CharacterlijstComputer {
     private ArrayList<Character> characters;
 
     public CharacterlijstComputer() {
         characters = new ArrayList<Character>();
-        // Voeg characters toe aan de lijst
-        characters.add(new Character("Alice", Geslacht.vrouw, HaarKleur.blond, Haarlengte.lang, HaarStijl.stijl, Accessoires.bril, Accessoires.oorbellen));
-        characters.add(new Character("Alex", Geslacht.man, HaarKleur.blond, Haarlengte.middelang, HaarStijl.golvend, Accessoires.pet, Accessoires.bril));
-        characters.add(new Character("Alana", Geslacht.vrouw, HaarKleur.bruin, Haarlengte.lang, HaarStijl.golvend, Accessoires.pet, Accessoires.halsketting));
-        characters.add(new Character("Bert", Geslacht.man, HaarKleur.groen, Haarlengte.lang, HaarStijl.stijl, Accessoires.hoed, Accessoires.geen));
-        characters.add(new Character("Charlie", Geslacht.man, HaarKleur.kaal, Haarlengte.kaal, HaarStijl.kaal, Accessoires.oorbellen, Accessoires.bril));
-        characters.add(new Character("Dirk", Geslacht.man, HaarKleur.bruin, Haarlengte.middelang, HaarStijl.stijl, Accessoires.pet, Accessoires.hoed));
-        characters.add(new Character("Gerda", Geslacht.vrouw, HaarKleur.kaal, Haarlengte.kaal, HaarStijl.kaal, Accessoires.hoed, Accessoires.bril));
-        characters.add(new Character("Jennifer", Geslacht.vrouw, HaarKleur.groen, Haarlengte.lang, HaarStijl.golvend, Accessoires.halsketting, Accessoires.oorbellen));
-        characters.add(new Character("Jan", Geslacht.man, HaarKleur.rood, Haarlengte.kort, HaarStijl.krullen, Accessoires.oorbellen, Accessoires.halsketting));
-        characters.add(new Character("Emma", Geslacht.vrouw, HaarKleur.zwart, Haarlengte.lang, HaarStijl.stijl, Accessoires.bril, Accessoires.oorbellen));
-        characters.add(new Character("Ethan", Geslacht.man, HaarKleur.bruin, Haarlengte.lang, HaarStijl.golvend, Accessoires.pet, Accessoires.bril));
-        characters.add(new Character("Emily", Geslacht.vrouw, HaarKleur.blond, Haarlengte.middelang, HaarStijl.stijl, Accessoires.halsketting, Accessoires.oorbellen));
-        characters.add(new Character("Frank", Geslacht.man, HaarKleur.blond, Haarlengte.kort, HaarStijl.krullen, Accessoires.hoed, Accessoires.geen));
-        characters.add(new Character("Lilly", Geslacht.vrouw, HaarKleur.bruin, Haarlengte.lang, HaarStijl.krullen, Accessoires.oorbellen, Accessoires.geen));
-        characters.add(new Character("Bob", Geslacht.man, HaarKleur.zwart, Haarlengte.kort, HaarStijl.krullen, Accessoires.oorbellen, Accessoires.geen));
-        characters.add(new Character("Cathy", Geslacht.vrouw, HaarKleur.rood, Haarlengte.lang, HaarStijl.stijl, Accessoires.hoed, Accessoires.geen));
-        characters.add(new Character("David", Geslacht.man, HaarKleur.bruin, Haarlengte.middelang, HaarStijl.golvend, Accessoires.pet, Accessoires.bril));
-        characters.add(new Character("Ella", Geslacht.vrouw, HaarKleur.blond, Haarlengte.lang, HaarStijl.krullen, Accessoires.halsketting, Accessoires.oorbellen));
-        characters.add(new Character("Fiona", Geslacht.vrouw, HaarKleur.bruin, Haarlengte.lang, HaarStijl.stijl, Accessoires.bril, Accessoires.oorbellen));
-        characters.add(new Character("George", Geslacht.man, HaarKleur.zwart, Haarlengte.kort, HaarStijl.krullen, Accessoires.hoed, Accessoires.geen));
-        characters.add(new Character("Hannah", Geslacht.vrouw, HaarKleur.rood, Haarlengte.lang, HaarStijl.golvend, Accessoires.halsketting, Accessoires.oorbellen));
-        characters.add(new Character("Ivan", Geslacht.man, HaarKleur.bruin, Haarlengte.middelang, HaarStijl.stijl, Accessoires.pet, Accessoires.bril));
-        characters.add(new Character("Jasmine", Geslacht.vrouw, HaarKleur.blond, Haarlengte.lang, HaarStijl.krullen, Accessoires.halsketting, Accessoires.oorbellen));
-        characters.add(new Character("Karen", Geslacht.vrouw, HaarKleur.bruin, Haarlengte.lang, HaarStijl.stijl, Accessoires.bril, Accessoires.oorbellen));
+        try {
+            File file = new File("characters.txt");
+            Scanner scanner = new Scanner(file);
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] parts = line.split(",");
+                String name = parts[0];
+                Geslacht geslacht = Geslacht.valueOf(parts[1]);
+                HaarKleur haarKleur = HaarKleur.valueOf(parts[2]);
+                Haarlengte haarLengte = Haarlengte.valueOf(parts[3]);
+                HaarStijl haarStijl = HaarStijl.valueOf(parts[4]);
+                Accessoires accessoire1 = Accessoires.valueOf(parts[5]);
+                Accessoires accessoire2 = Accessoires.valueOf(parts[6]);
+                characters.add(new Character(name, geslacht, haarKleur, haarLengte, haarStijl, accessoire1, accessoire2));
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
 
     public ArrayList<Character> getCharacters() {

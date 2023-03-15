@@ -1,4 +1,4 @@
-package be.kdg.projectbasis.model;
+package be.kdg.projectbasis.model.highscore;
 
 public class Highscore implements Comparable<Highscore>{
     private String spelernaam;

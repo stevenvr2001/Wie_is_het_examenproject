@@ -1,14 +1,14 @@
-package be.kdg.projectbasis.view.testscreen;
+package be.kdg.projectbasis.view.spelregels;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 
-public class TestScreenView extends FlowPane {
+public class SpelregelsView extends FlowPane {
     private Button btnInvoer;
     private TextField txtUitvoer;
 
-    public TestScreenView() {
+    public SpelregelsView() {
         this.initialiseNodes();
         this.layoutNodes();
     }

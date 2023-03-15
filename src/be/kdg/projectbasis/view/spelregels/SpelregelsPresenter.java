@@ -1,14 +1,14 @@
-package be.kdg.projectbasis.view.testscreen;
+package be.kdg.projectbasis.view.spelregels;
 
 import be.kdg.projectbasis.model.ProgrammaModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class TestScreenPresenter {
+public class SpelregelsPresenter {
     private ProgrammaModel model;
-    private TestScreenView view;
+    private SpelregelsView view;
 
-    public TestScreenPresenter(ProgrammaModel model, TestScreenView view) {
+    public SpelregelsPresenter(ProgrammaModel model, SpelregelsView view) {
         this.model = model;
         this.view = view;
         this.addEventHandlers();

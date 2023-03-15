@@ -1,4 +1,5 @@
 package be.kdg.projectbasis.model;
+import be.kdg.projectbasis.model.highscore.Highscore;
 import be.kdg.projectbasis.model.spelbeurten.SpelbeurtComputer;
 import be.kdg.projectbasis.model.spelbeurten.SpelbeurtSpeler;
 import be.kdg.projectbasis.model.spelbeurten.Speler;

@@ -53,6 +53,10 @@ public class HoofdmenuView extends VBox {
         this.setAlignment(Pos.CENTER);
     }
 
+
+
+
+
     public Button getBtnNieuwSpel() {
         return btnNieuwSpel;
     }

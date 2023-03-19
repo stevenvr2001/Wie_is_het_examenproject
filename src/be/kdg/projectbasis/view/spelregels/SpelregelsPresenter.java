@@ -8,7 +8,7 @@ public class SpelregelsPresenter {
     private ProgrammaModel model;
     private SpelregelsView view;
 
-    public SpelregelsPresenter(ProgrammaModel model, SpelregelsView view) {
+    public SpelregelsPresenter( ProgrammaModel model, SpelregelsView view) {
         this.model = model;
         this.view = view;
         this.addEventHandlers();

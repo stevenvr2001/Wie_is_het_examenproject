@@ -1,12 +1,9 @@
 package be.kdg.projectbasis.view.hoofdmenu;
-
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+
 
 public class HoofdmenuView extends VBox {
     //1. Maak een attribuut per node (zowel controls en panes, behalve de "root pane")
@@ -23,7 +20,6 @@ public class HoofdmenuView extends VBox {
     private Button btnNieuwSpel;
     private Button btnTopscoren;
     private Button btnSpelregels;
-
     private Button btnAfsluiten;
 
 
@@ -35,11 +31,10 @@ public class HoofdmenuView extends VBox {
     }
 
     private void initialiseNodes() {
-        btnNieuwSpel = new HoofdmenuButton("Nieuwe spel");
-        btnTopscoren = new HoofdmenuButton("Topscoren");
+        btnNieuwSpel = new HoofdmenuButton("Nieuw spel");
+        btnTopscoren = new HoofdmenuButton("Top scores");
         btnSpelregels = new HoofdmenuButton("Spelregels");
         btnAfsluiten = new HoofdmenuButton("Afsluiten");
-
     }
 
     private void layoutNodes() {
@@ -48,7 +43,7 @@ public class HoofdmenuView extends VBox {
         this.getChildren().add(btnSpelregels);
         this.getChildren().add(btnAfsluiten);
         this.setSpacing(50);
-        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("/istockphoto-1126081792-612x612.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true,true, true));
+        BackgroundImage achtergrondAfbeelding = new BackgroundImage(new Image("/be/kdg/projectbasis/resources/bg-main.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, new BackgroundSize(100,100,true,true,true, true));
         this.setBackground(new Background(achtergrondAfbeelding));
         this.setAlignment(Pos.CENTER);
     }

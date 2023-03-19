@@ -1,7 +1,7 @@
 package be.kdg.projectbasis.model.spelbeurten;
-import be.kdg.projectbasis.model.character.*;
-import be.kdg.projectbasis.model.character.Character;
 
+import be.kdg.projectbasis.model.character.Character;
+import be.kdg.projectbasis.model.character.CharacterlijstSpeler;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -45,8 +45,8 @@ public class SpelbeurtSpeler {
         System.out.println(" ");
         System.out.println("Resterende karakters:");
         for (Character character : remainingCharacters) {
-            System.out.println("- " + character.getNaam() + " (geslacht: " + character.getGeslacht() + ", haarkleur: " + character.getHaarKleur() + ", haarlengte: "
-                    + character.getHaarlengte() + ", haarstijl: " + character.getHaarStijl() + ", accessoire1: " + character.getaccessoire1() + ", accessoire2: " + character.getaccessoire2() + ")");
+            System.out.println("- " + character.getNaam() + ", geslacht: " + character.getGeslacht() + ", oogkleur: " + character.getOogkleur() +", haarkleur: " + character.getHaarKleur() + ", haarlengte: "
+                    + character.getHaarlengte() + ", haarstijl: " + character.getHaarStijl() + ", gezichtsbeharing: " + character.getGezichtsbeharing() + ", hoofddeksel: " + character.getHoofddeksel() + ", accessoires: " + character.getAccessoires() + ")");
         }
 
             System.out.println("Stel een vraag over het karakter om te raden (bijv. 'Is het karakter een man?')");
@@ -90,8 +90,8 @@ public class SpelbeurtSpeler {
              System.out.println(" ");
             System.out.println("Resterende karakters:");
             for (Character character : remainingCharacters) {
-                System.out.println("- " + character.getNaam() + " (geslacht: " + character.getGeslacht() + ", haarkleur: " + character.getHaarKleur() + ", haarlengte: "
-                        + character.getHaarlengte() + ", haarstijl: " + character.getHaarStijl() + ", accessoire1: " + character.getaccessoire1() + ", accessoire2: " + character.getaccessoire2() + ")");
+                System.out.println("- " + character.getNaam() + ", geslacht: " + character.getGeslacht() + ", oogkleur: " + character.getOogkleur() +", haarkleur: " + character.getHaarKleur() + ", haarlengte: "
+                        + character.getHaarlengte() + ", haarstijl: " + character.getHaarStijl() + ", gezichtsbeharing: " + character.getGezichtsbeharing() + ", hoofddeksel: " + character.getHoofddeksel() + ", accessoires: " + character.getAccessoires() + ")");
             }
             System.out.println(" ");
             System.out.println("Raad het karakter (typ de naam in)");

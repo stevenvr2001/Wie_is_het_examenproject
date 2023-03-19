@@ -1,38 +1,49 @@
 package be.kdg.projectbasis.model.character;
-import be.kdg.projectbasis.model.character.Enums.*;
 
+import be.kdg.projectbasis.model.character.Enums.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.File;
 import java.util.ArrayList;
 
+
 public class CharacterlijstSpeler {
-    private ArrayList<Character> characters;
+    private final ArrayList<Character> characters;
 
     public CharacterlijstSpeler() {
-        characters = new ArrayList<Character>();
-        // Voeg characters toe aan de lijst
-       characters.add(new Character("Alice", Geslacht.vrouw, HaarKleur.blond, Haarlengte.lang, HaarStijl.stijl, Accessoires.bril, Accessoires.oorbellen));
-        characters.add(new Character("Alex", Geslacht.man, HaarKleur.blond, Haarlengte.middelang, HaarStijl.golvend, Accessoires.pet, Accessoires.bril));
-        characters.add(new Character("Alana", Geslacht.vrouw, HaarKleur.bruin, Haarlengte.lang, HaarStijl.golvend, Accessoires.pet, Accessoires.halsketting));
-        characters.add(new Character("Bert", Geslacht.man, HaarKleur.groen, Haarlengte.lang, HaarStijl.stijl, Accessoires.hoed, Accessoires.geen));
-        characters.add(new Character("Charlie", Geslacht.man, HaarKleur.kaal, Haarlengte.kaal, HaarStijl.kaal, Accessoires.oorbellen, Accessoires.bril));
-        characters.add(new Character("Dirk", Geslacht.man, HaarKleur.bruin, Haarlengte.middelang, HaarStijl.stijl, Accessoires.pet, Accessoires.hoed));
-        characters.add(new Character("Gerda", Geslacht.vrouw, HaarKleur.kaal, Haarlengte.kaal, HaarStijl.kaal, Accessoires.hoed, Accessoires.bril));
-        characters.add(new Character("Jennifer", Geslacht.vrouw, HaarKleur.groen, Haarlengte.lang, HaarStijl.golvend, Accessoires.halsketting, Accessoires.oorbellen));
-        characters.add(new Character("Jan", Geslacht.man, HaarKleur.rood, Haarlengte.kort, HaarStijl.krullen, Accessoires.oorbellen, Accessoires.halsketting));
-        characters.add(new Character("Emma", Geslacht.vrouw, HaarKleur.zwart, Haarlengte.lang, HaarStijl.stijl, Accessoires.bril, Accessoires.oorbellen));
-        characters.add(new Character("Ethan", Geslacht.man, HaarKleur.bruin, Haarlengte.lang, HaarStijl.golvend, Accessoires.pet, Accessoires.bril));
-        characters.add(new Character("Emily", Geslacht.vrouw, HaarKleur.blond, Haarlengte.middelang, HaarStijl.stijl, Accessoires.halsketting, Accessoires.oorbellen));
-        characters.add(new Character("Frank", Geslacht.man, HaarKleur.blond, Haarlengte.kort, HaarStijl.krullen, Accessoires.hoed, Accessoires.geen));
-        characters.add(new Character("Lilly", Geslacht.vrouw, HaarKleur.bruin, Haarlengte.lang, HaarStijl.krullen, Accessoires.oorbellen, Accessoires.geen));
-        characters.add(new Character("Bob", Geslacht.man, HaarKleur.zwart, Haarlengte.kort, HaarStijl.krullen, Accessoires.oorbellen, Accessoires.geen));
-        characters.add(new Character("Cathy", Geslacht.vrouw, HaarKleur.rood, Haarlengte.lang, HaarStijl.stijl, Accessoires.hoed, Accessoires.geen));
-        characters.add(new Character("David", Geslacht.man, HaarKleur.bruin, Haarlengte.middelang, HaarStijl.golvend, Accessoires.pet, Accessoires.bril));
-        characters.add(new Character("Ella", Geslacht.vrouw, HaarKleur.blond, Haarlengte.lang, HaarStijl.krullen, Accessoires.halsketting, Accessoires.oorbellen));
-        characters.add(new Character("Fiona", Geslacht.vrouw, HaarKleur.bruin, Haarlengte.lang, HaarStijl.stijl, Accessoires.bril, Accessoires.oorbellen));
-        characters.add(new Character("George", Geslacht.man, HaarKleur.zwart, Haarlengte.kort, HaarStijl.krullen, Accessoires.hoed, Accessoires.geen));
-        characters.add(new Character("Hannah", Geslacht.vrouw, HaarKleur.rood, Haarlengte.lang, HaarStijl.golvend, Accessoires.halsketting, Accessoires.oorbellen));
-        characters.add(new Character("Ivan", Geslacht.man, HaarKleur.bruin, Haarlengte.middelang, HaarStijl.stijl, Accessoires.pet, Accessoires.bril));
-        characters.add(new Character("Jasmine", Geslacht.vrouw, HaarKleur.blond, Haarlengte.lang, HaarStijl.krullen, Accessoires.halsketting, Accessoires.oorbellen));
-        characters.add(new Character("Karen", Geslacht.vrouw, HaarKleur.bruin, Haarlengte.lang, HaarStijl.stijl, Accessoires.bril, Accessoires.oorbellen));
+        characters = new ArrayList<>();
+        try {
+            File file = new File("src/be/kdg/projectbasis/resources/characters/characters.xml");
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(file);
+            doc.getDocumentElement().normalize();
+            NodeList nodeList = doc.getElementsByTagName("character");
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Node node = nodeList.item(i);
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element element = (Element) node;
+                    String name = element.getAttribute("name");
+                    String geslacht = element.getAttribute("geslacht").toLowerCase();
+                    String oogKleur = element.getAttribute("oogkleur").toLowerCase();
+                    String haarKleur = element.getAttribute("haarkleur").toLowerCase();
+                    String haarLengte = element.getAttribute("haarlengte").toLowerCase();
+                    String haarStijl = element.getAttribute("haarstijl").toLowerCase();
+                    String gezichtsbeharing = element.getAttribute("gezichtsbeharing").toLowerCase();
+                    String hoofddeksel = element.getAttribute("hoofddeksel").toLowerCase();
+                    String accessoires = element.getAttribute("accessoires").toLowerCase();
+                    characters.add(new Character(name, Geslacht.valueOf(geslacht), Oogkleur.valueOf(oogKleur), HaarKleur.valueOf(haarKleur), Haarlengte.valueOf(haarLengte), HaarStijl.valueOf(haarStijl), Gezichtsbeharing.valueOf(gezichtsbeharing), Hoofddeksel.valueOf(hoofddeksel), Accessoires.valueOf(accessoires)));
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
 
     public ArrayList<Character> getCharacters() {

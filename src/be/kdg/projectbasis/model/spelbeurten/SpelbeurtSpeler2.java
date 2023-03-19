@@ -9,7 +9,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class SpelbeurtSpeler2 {
-    private ArrayList<Character> remainingCharacters;
+    private ArrayList<Character> remainingCharactersSpeler2;
     private Random random;
     private Character characterToGuess;
 
@@ -21,18 +21,18 @@ public class SpelbeurtSpeler2 {
 
         // Print alle characters voor de speler
         CharacterlijstSpeler characterlijstSpeler = new CharacterlijstSpeler();
-        remainingCharacters = new ArrayList<>();
+        remainingCharactersSpeler2 = new ArrayList<>();
 
         System.out.println(" ");
         for (Character character : characterlijstSpeler.getCharacters()) {
             System.out.println("- " + character.getNaam());
             // Alle characters invoegen
-            remainingCharacters.add(character);
+            remainingCharactersSpeler2.add(character);
         }
         System.out.println("Kies een character uit de bovenstaande lijst dat de speler moet raden");
         // Kies een willekeurige character om te raden
         random = new Random();
-        characterToGuess = remainingCharacters.get(random.nextInt(remainingCharacters.size()));
+        characterToGuess = remainingCharactersSpeler2.get(random.nextInt(remainingCharactersSpeler2.size()));
         System.out.println("keuze genoteerd");
         System.out.println(" ");
     }
@@ -44,9 +44,9 @@ public class SpelbeurtSpeler2 {
         // Geef de lijst met resterende karakters weer, samen met hun eigenschappen
         System.out.println(" ");
         System.out.println("Resterende karakters:");
-        for (Character character : remainingCharacters) {
-            System.out.println("- " + character.getNaam() + " (geslacht: " + character.getGeslacht() + ", haarkleur: " + character.getHaarKleur() + ", haarlengte: "
-                    + character.getHaarlengte() + ", haarstijl: " + character.getHaarStijl() + ", accessoire1: " + character.getaccessoire1() + ", accessoire2: " + character.getaccessoire2() + ")");
+        for (Character character : remainingCharactersSpeler2) {
+            System.out.println("- " + character.getNaam() + ", geslacht: " + character.getGeslacht() + ", oogkleur: " + character.getOogkleur() +", haarkleur: " + character.getHaarKleur() + ", haarlengte: "
+                    + character.getHaarlengte() + ", haarstijl: " + character.getHaarStijl() + ", gezichtsbeharing: " + character.getGezichtsbeharing() + ", hoofddeksel: " + character.getHoofddeksel() + ", accessoires: " + character.getAccessoires() + ")");
         }
 
             System.out.println("Stel een vraag over het karakter om te raden (bijv. 'Is het karakter een man?')");
@@ -66,7 +66,7 @@ public class SpelbeurtSpeler2 {
 
         // Als antwoord nee is
         if (answer.equals("nee")) {
-            Iterator<Character> iterator = remainingCharacters.iterator();
+            Iterator<Character> iterator = remainingCharactersSpeler2.iterator();
             while (iterator.hasNext()) {
                 Character character = iterator.next();
                 if (character.matches(question)) {
@@ -76,7 +76,7 @@ public class SpelbeurtSpeler2 {
         }
         // Als antwoord ja is
         if (answer.equals("ja")) {
-            Iterator<Character> iterator = remainingCharacters.iterator();
+            Iterator<Character> iterator = remainingCharactersSpeler2.iterator();
             while (iterator.hasNext()) {
                Character character = iterator.next();
                 if (!character.matches(question)) {
@@ -89,9 +89,9 @@ public class SpelbeurtSpeler2 {
         // Geef de lijst met resterende karakters weer, samen met hun eigenschappen
              System.out.println(" ");
             System.out.println("Resterende karakters:");
-            for (Character character : remainingCharacters) {
-                System.out.println("- " + character.getNaam() + " (geslacht: " + character.getGeslacht() + ", haarkleur: " + character.getHaarKleur() + ", haarlengte: "
-                        + character.getHaarlengte() + ", haarstijl: " + character.getHaarStijl() + ", accessoire1: " + character.getaccessoire1() + ", accessoire2: " + character.getaccessoire2() + ")");
+            for (Character character : remainingCharactersSpeler2) {
+                System.out.println("- " + character.getNaam() + ", geslacht: " + character.getGeslacht() + ", oogkleur: " + character.getOogkleur() +", haarkleur: " + character.getHaarKleur() + ", haarlengte: "
+                        + character.getHaarlengte() + ", haarstijl: " + character.getHaarStijl() + ", gezichtsbeharing: " + character.getGezichtsbeharing() + ", hoofddeksel: " + character.getHoofddeksel() + ", accessoires: " + character.getAccessoires() + ")");
             }
             System.out.println(" ");
             System.out.println("Raad het karakter (typ de naam in)");
@@ -108,14 +108,14 @@ public class SpelbeurtSpeler2 {
     public void reset() {
         // Reset de lijst van resterende karakters
         CharacterlijstSpeler characterlijstSpeler = new CharacterlijstSpeler();
-        remainingCharacters = new ArrayList<>();
+        remainingCharactersSpeler2 = new ArrayList<>();
         for (Character character : characterlijstSpeler.getCharacters()) {
-            remainingCharacters.add(character);
+            remainingCharactersSpeler2.add(character);
         }
 
         // Kies een nieuwe willekeurige character om te raden
         random = new Random();
-        characterToGuess = remainingCharacters.get(random.nextInt(remainingCharacters.size()));
+        characterToGuess = remainingCharactersSpeler2.get(random.nextInt(remainingCharactersSpeler2.size()));
 
         // Reset de spelerWin-flag
         spelerWin = false;

@@ -2,38 +2,38 @@ package be.kdg.projectbasis.model.character;
 import be.kdg.projectbasis.model.character.Enums.*;
 
 public class Character {
-        private String naam;
-        private HaarKleur haarKleur;
-        private Accessoires accessoire1;
+    private String naam;
+    private HaarKleur haarKleur;
+    private Accessoires accessoire;
+    private Haarlengte haarlengte;
+    private Geslacht geslacht;
+    private HaarStijl haarStijl;
+    private Oogkleur oogkleur;
+    private Hoofddeksel hoofddeksel;
+    private Gezichtsbeharing gezichtsbeharing;
 
-        private Accessoires accessoire2;
-        private Haarlengte haarlengte;
-        private Geslacht geslacht;
-        private HaarStijl haarStijl;
-        public Character(String naam,Geslacht geslacht, HaarKleur haarKleur, Haarlengte haarlengte, HaarStijl haarStijl, Accessoires accessoire1, Accessoires accessoire2) {
-            this.naam = naam;
-            this.haarKleur = haarKleur;
-            this.geslacht = geslacht;
-            this.haarlengte = haarlengte;
-            this.haarStijl = haarStijl;
-            this.accessoire1 = accessoire1;
-            this.accessoire2 = accessoire2;
-        }
+    public Character(String naam, Geslacht geslacht, Oogkleur oogkleur, HaarKleur haarKleur, Haarlengte haarlengte, HaarStijl haarStijl, Gezichtsbeharing gezichtsbeharing, Hoofddeksel hoofddeksel, Accessoires accessoire) {
+        this.naam = naam;
+        this.geslacht = geslacht;
+        this.oogkleur = oogkleur;
+        this.haarKleur = haarKleur;
+        this.haarlengte = haarlengte;
+        this.haarStijl = haarStijl;
+        this.gezichtsbeharing = gezichtsbeharing;
+        this.hoofddeksel = hoofddeksel;
+        this.accessoire = accessoire;
+    }
 
-        public String getNaam() {
-            return naam;
-        }
+    public String getNaam() {
+        return naam;
+    }
 
     public HaarKleur getHaarKleur() {
         return haarKleur;
     }
 
-    public Accessoires getaccessoire1() {
-        return accessoire1;
-    }
-
-    public Accessoires getaccessoire2() {
-        return accessoire2;
+    public Accessoires getAccessoires() {
+        return accessoire;
     }
 
     public Haarlengte getHaarlengte() {
@@ -48,21 +48,40 @@ public class Character {
         return haarStijl;
     }
 
+    public Oogkleur getOogkleur() {
+        return oogkleur;
+    }
+
+    public Hoofddeksel getHoofddeksel() {
+        return hoofddeksel;
+    }
+
+    public Gezichtsbeharing getGezichtsbeharing() {
+        return gezichtsbeharing;
+    }
+
+
     public boolean matches(String question) {
-            // Gebruik de vraag van de speler om te bepalen of het karakter aan de eigenschap voldoet
-            if (question.contains("man") || question.contains("vrouw")) {
-                return geslacht.matches(question);
-            } else if (question.contains("bruin") || question.contains("kaal") || question.contains("rood")|| question.contains("blauw") || question.contains("groen") || question.contains("blond") || question.contains("zwart")) {
-                return haarKleur.matches(question);
-            } else if (question.contains("bril") || question.contains("pet") || question.contains("oorbel") || question.contains("ketting") || question.contains("geen")  || question.contains("hoed")) {
-                return accessoire1.matches(question);
-            } else if (question.contains("bril") || question.contains("pet") || question.contains("oorbel") || question.contains("ketting") || question.contains("geen")  || question.contains("hoed")) {
-                return accessoire2.matches(question);
-            } else if (question.contains("kort") || question.contains("lang") || question.contains("kaal") || question.contains("middelang")){
-                return haarlengte.matches(question);
-            } else if (question.contains("krullen") || question.contains("stijl") || question.contains("kaal") || question.contains("golvend")){
-                return haarStijl.matches(question);
-            }
+        // Gebruik de vraag van de speler om te bepalen of het karakter aan de eigenschap voldoet
+        if (question.contains("man") || question.contains("vrouw")) {
+            return geslacht.matches(question);
+        } else if ((question.contains("blond") || question.contains("bruin") || question.contains("zwart") || question.contains("blonde") || question.contains("bruine") || question.contains("zwarte") || question.contains("rood")|| question.contains("rode")) && (question.contains("haar") || question.contains("haren"))) {
+            return haarKleur.matches(question);
+        } else if (question.contains("lang") || question.contains("kort") || question.contains("middellang") || question.contains("kaal")) {
+            return haarlengte.matches(question);
+        } else if ((question.contains("blauw") || question.contains("blauwe")|| question.contains("bruine") || question.contains("bruin") || question.contains("groene")|| question.contains("groen")|| question.contains("grijze")|| question.contains("grijs")) && (question.contains("oog") || question.contains("ogen"))) {
+            return oogkleur.matches(question);
+        } else if (question.contains("baard") || question.contains("snor")) {
+            return gezichtsbeharing.matches(question);
+        } else if (question.contains("hoed") || question.contains("pet") || question.contains("geen hoofddeksel")) {
+            return hoofddeksel.matches(question);
+        } else if (question.contains("bril") || question.contains("zonnebril") || question.contains("geen accesoires")) {
+            return accessoire.matches(question);
+        } else if (question.contains("krullen") || question.contains("stijl") || question.contains("kaal") || question.contains("golvend")) {
+            return haarStijl.matches(question);
+        } else {
+            System.out.println("Dit is geen geldige vraag");
             return false;
         }
     }
+}

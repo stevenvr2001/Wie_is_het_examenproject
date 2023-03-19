@@ -1,21 +1,10 @@
 package be.kdg.projectbasis;
-
 import be.kdg.projectbasis.model.ProgrammaModel;
-
-import be.kdg.projectbasis.model.spelbeurten.SpelbeurtComputer;
-import be.kdg.projectbasis.model.spelbeurten.SpelbeurtSpeler;
-import be.kdg.projectbasis.view.gegevensScene.GegevensPresenter;
-import be.kdg.projectbasis.view.gegevensScene.GegevensView;
-import be.kdg.projectbasis.view.highscore.HighscorePresenter;
-import be.kdg.projectbasis.view.highscore.HighscoreView;
 import be.kdg.projectbasis.view.hoofdmenu.HoofdmenuPresenter;
 import be.kdg.projectbasis.view.hoofdmenu.HoofdmenuView;
 import javafx.application.Application;
-
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import java.util.Scanner;
 
 
 public class Main extends Application{

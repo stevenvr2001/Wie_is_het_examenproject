@@ -12,7 +12,7 @@ public class HoofdmenuButton extends Button {
     public HoofdmenuButton(String s) {
         super(s);
         this.setBackground(new Background(new BackgroundFill(new Color(1, 1, 1, 0.5), new CornerRadii(20), new Insets(1))));
-        this.setFont(new Font("Comic Sans MS", 24));
+        this.setFont(new Font("Arial Black", 24));
         this.setPrefWidth(400);
         this.setPrefWidth(400);
 

@@ -1,40 +1,53 @@
 package be.kdg.projectbasis.model.character;
+
 import be.kdg.projectbasis.model.character.Enums.*;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
-
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class CharacterlijstComputer {
-    private ArrayList<Character> characters;
+    private final ArrayList<Character> charactersComputer;
 
     public CharacterlijstComputer() {
-        characters = new ArrayList<Character>();
+        charactersComputer = new ArrayList<>();
         try {
-            File file = new File("characters.txt");
-            Scanner scanner = new Scanner(file);
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
-                String[] parts = line.split(",");
-                String name = parts[0];
-                Geslacht geslacht = Geslacht.valueOf(parts[1]);
-                HaarKleur haarKleur = HaarKleur.valueOf(parts[2]);
-                Haarlengte haarLengte = Haarlengte.valueOf(parts[3]);
-                HaarStijl haarStijl = HaarStijl.valueOf(parts[4]);
-                Accessoires accessoire1 = Accessoires.valueOf(parts[5]);
-                Accessoires accessoire2 = Accessoires.valueOf(parts[6]);
-                characters.add(new Character(name, geslacht, haarKleur, haarLengte, haarStijl, accessoire1, accessoire2));
+            File file = new File("src/be/kdg/projectbasis/resources/characters/characters.xml");
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(file);
+            doc.getDocumentElement().normalize();
+            NodeList nodeList = doc.getElementsByTagName("character");
+            for (int i = 0; i < nodeList.getLength(); i++) {
+                Node node = nodeList.item(i);
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
+                    Element element = (Element) node;
+                    String name = element.getAttribute("name");
+                    String geslacht = element.getAttribute("geslacht").toLowerCase();
+                    String oogKleur = element.getAttribute("oogkleur").toLowerCase();
+                    String haarKleur = element.getAttribute("haarkleur").toLowerCase();
+                    String haarLengte = element.getAttribute("haarlengte").toLowerCase();
+                    String haarStijl = element.getAttribute("haarstijl").toLowerCase();
+                    String gezichtsbeharing = element.getAttribute("gezichtsbeharing").toLowerCase();
+                    String hoofddeksel = element.getAttribute("hoofddeksel").toLowerCase();
+                    String accessoires = element.getAttribute("accessoires").toLowerCase();
+                    charactersComputer.add(new Character(name, Geslacht.valueOf(geslacht), Oogkleur.valueOf(oogKleur), HaarKleur.valueOf(haarKleur), Haarlengte.valueOf(haarLengte), HaarStijl.valueOf(haarStijl), Gezichtsbeharing.valueOf(gezichtsbeharing), Hoofddeksel.valueOf(hoofddeksel), Accessoires.valueOf(accessoires)));
+                }
             }
-            scanner.close();
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
     }
 
-    public ArrayList<Character> getCharacters() {
-        return characters;
+    public ArrayList<Character> getCharactersComputer() {
+        return charactersComputer;
     }
 }
+

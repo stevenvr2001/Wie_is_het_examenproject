@@ -30,6 +30,13 @@ import java.util.ArrayList;
             questions.add("heeft het karakter oorbellen?");
             questions.add("heeft het karakter een halsketting?");
             questions.add("heeft het karakter geen accesoires?");
+            questions.add("heeft het karakter een baard?");
+            questions.add("heeft het karakter een snor?");
+            questions.add("heeft het karakter geen gezichtsbeharing?");
+            questions.add("heeft het karakter blauwe ogen?");
+            questions.add("heeft het karakter bruine ogen?");
+            questions.add("heeft het karakter groene ogen?");
+            questions.add("heeft het karakter grijze ogen?");
         }
 
         // Een methode om een willekeurige vraag uit de lijst te selecteren, zonder herhaling van vragen

@@ -2,12 +2,11 @@ package be.kdg.projectbasis.view.hoofdmenu;
 
 import be.kdg.projectbasis.Main;
 import be.kdg.projectbasis.model.ProgrammaModel;
-import be.kdg.projectbasis.view.gegevensScene.GegevensPresenter;
-import be.kdg.projectbasis.view.gegevensScene.GegevensView;
+import be.kdg.projectbasis.view.gegevens.GegevensPresenter;
+import be.kdg.projectbasis.view.gegevens.GegevensView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 public class HoofdmenuPresenter {
 
@@ -31,27 +30,16 @@ public class HoofdmenuPresenter {
                updateView();
            }
        });
-
-
-                /*
-                GegevensView GegevensView = new GegevensView();
-                GegevensPresenter GegevensPresenter = new GegevensPresenter(model,GegevensView);
-                Stage gegevensInvulStage = new Stage();
-                gegevensInvulStage.initOwner(view.getScene().getWindow());
-                gegevensInvulStage.setScene(new Scene(GegevensView));
-                gegevensInvulStage.showAndWait();*/
-
     }
 
     private void updateView() {
         GegevensView gegevensView = new GegevensView();
         GegevensPresenter gegevensPresenter = new GegevensPresenter(model,gegevensView);
-        Scene Highscores = new Scene(gegevensView);
-        Main.Window.setScene(Highscores);
-        Main.Window.setTitle("Highscores");
+        Scene gegevens = new Scene(gegevensView);
+        Main.Window.setScene(gegevens);
+        Main.Window.setTitle("speler gegevens");
         Main.Window.show();
         Main.Window.setFullScreen(true);
-
     }
 
 

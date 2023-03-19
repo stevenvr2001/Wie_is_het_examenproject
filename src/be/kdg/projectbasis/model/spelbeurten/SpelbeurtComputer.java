@@ -1,6 +1,8 @@
 package be.kdg.projectbasis.model.spelbeurten;
-import be.kdg.projectbasis.model.character.*;
+
 import be.kdg.projectbasis.model.character.Character;
+import be.kdg.projectbasis.model.character.CharacterlijstComputer;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
@@ -8,7 +10,6 @@ import java.util.Scanner;
 
 public class SpelbeurtComputer {
     private ArrayList<Character> remainingCharactersComputer;
-    private Random random;
     private Character chosenCharacter;
 
     public boolean computerWin = false;
@@ -16,10 +17,10 @@ public class SpelbeurtComputer {
     
     public void setupComputer() {
         // Print alle characters voor de speler
-        CharacterlijstSpeler characterlijstSpeler = new CharacterlijstSpeler();
+        CharacterlijstComputer CharacterlijstComputer = new CharacterlijstComputer();
         remainingCharactersComputer = new ArrayList<>();
 
-        for (Character character : characterlijstSpeler.getCharacters()) {
+        for (Character character : CharacterlijstComputer.getCharactersComputer()) {
             System.out.println("- " + character.getNaam());
             // Alle characters invoegen
             remainingCharactersComputer.add(character);
@@ -101,9 +102,9 @@ public class SpelbeurtComputer {
     }
     public void reset() {
         // Reset de lijst van resterende karakters
-        CharacterlijstSpeler characterlijstSpeler = new CharacterlijstSpeler();
+        CharacterlijstComputer CharacterlijstComputer = new CharacterlijstComputer();
         remainingCharactersComputer = new ArrayList<>();
-        for (Character character : characterlijstSpeler.getCharacters()) {
+        for (Character character : CharacterlijstComputer.getCharactersComputer()) {
             remainingCharactersComputer.add(character);
         }
 

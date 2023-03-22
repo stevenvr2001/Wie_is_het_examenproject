@@ -1,10 +1,10 @@
-package be.kdg.projectbasis.view.gegevens;
+package be.kdg.projectbasis.view.standaardElementen;
 
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 
-public class SceneLabel extends Label {
-    public SceneLabel(String s){
+public class StyleLabel extends Label {
+    public StyleLabel(String s){
         super(s);
         this.setFont(new Font("Arial Black", 24));
 
